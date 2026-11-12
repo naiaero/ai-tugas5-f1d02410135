@@ -1,0 +1,209 @@
+{
+  "judul": "Sistem Pakar Penentuan Strategi Pit Stop dan Pemilihan Ban Formula 1",
+  "batas": "Aturan berbasis regulasi FIA 2026 (Section B) dan pemodelan optimasi pit stop (Dynamic Programming & Game Theory). Sistem ini memberikan rekomendasi keputusan strategi pit stop dan jenis ban.",
+  "sumber": {
+    "S1": "FIA 2026 F1 Sporting Regulations (Section B)",
+    "S2": "Optimizing Pit Stop Strategies in Formula 1 with Dynamic Programming and Game Theory"
+  },
+  "aturan": [
+    {
+      "id": "R1",
+      "jika": [
+        "Sesi = Balapan",
+        "Kondisi Lintasan = Kering",
+        "Deklarasi Basah FIA = Tidak",
+        "Jumlah Compound Kering = 1 Jenis",
+        "Sisa Lap <= Batas Stint"
+      ],
+      "mode": "dan",
+      "maka": "Mandat FIA = Wajib Pit Ganti Ban Lain",
+      "sumber": "S1"
+    },
+    {
+      "id": "R2",
+      "jika_gabungan": {
+        "mode_luar": "dan",
+        "syarat": [
+          "Sesi = Balapan",
+          {
+            "mode_dalam": "atau",
+            "syarat": [
+              "Deklarasi Basah FIA = Ya",
+              "Ban Saat Ini IN (Intermediate, Full Wet)"
+            ]
+          }
+        ]
+      },
+      "mode": "dan_kombinasi",
+      "maka": "Mandat FIA = Bebas Aturan Dua Compound",
+      "sumber": "S1"
+    },
+    {
+      "id": "R3",
+      "jika": [
+        "Status Safety Car = Wajib Ban Basah SC"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Full Wet AND Mandat FIA = Wajib Full Wet",
+      "sumber": "S1"
+    },
+    {
+      "id": "R4",
+      "jika": [
+        "Sesi = Kualifikasi",
+        "Fase Quali IN (Q1, Q2)",
+        "Kondisi Lintasan = Kering"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Soft",
+      "sumber": "S1"
+    },
+    {
+      "id": "R5",
+      "jika": [
+        "Sesi = Kualifikasi",
+        "Fase Quali = Q3",
+        "Kondisi Lintasan = Kering"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Soft Baru",
+      "sumber": "S1"
+    },
+    {
+      "id": "R6",
+      "jika": [
+        "Kondisi Lintasan = Basah Deras"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Full Wet",
+      "sumber": "S1, S2"
+    },
+    {
+      "id": "R7",
+      "jika": [
+        "Kondisi Lintasan = Lembap"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Intermediate",
+      "sumber": "S1, S2"
+    },
+    {
+      "id": "R8",
+      "jika": [
+        "Kondisi Lintasan = Kering",
+        "Target Stint = Hemat Panjang"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Hard",
+      "sumber": "S2"
+    },
+    {
+      "id": "R9",
+      "jika": [
+        "Kondisi Lintasan = Kering",
+        "Target Stint = Sedang Seimbang"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Medium",
+      "sumber": "S2"
+    },
+    {
+      "id": "R10",
+      "jika": [
+        "Kondisi Lintasan = Kering",
+        "Target Stint = Push Pendek"
+      ],
+      "mode": "dan",
+      "maka": "Pilihan Ban = Soft",
+      "sumber": "S2"
+    },
+    {
+      "id": "R11",
+      "jika": [
+        "Degradasi Ban = Aus Parah"
+      ],
+      "mode": "dan",
+      "maka": "Keputusan Pit = Masuk Pit Sekarang",
+      "sumber": "S2"
+    },
+    {
+      "id": "R12",
+      "jika": [
+        "Status Safety Car IN (VSC, Safety Car)",
+        "Degradasi Ban IN (Tinggi, Aus Parah)"
+      ],
+      "mode": "dan",
+      "maka": "Keputusan Pit = Momen Pit Hemat Waktu",
+      "sumber": "S2"
+    },
+    {
+      "id": "R13",
+      "jika": [
+        "Ancaman Rival = Ancaman Undercut",
+        "Degradasi Ban IN (Tinggi, Aus Parah)"
+      ],
+      "mode": "dan",
+      "maka": "Keputusan Pit = Tangkis Undercut",
+      "sumber": "S2"
+    },
+    {
+      "id": "R14",
+      "jika": [
+        "Degradasi Ban = Rendah",
+        "Mandat FIA != Wajib Pit Ganti Ban Lain"
+      ],
+      "mode": "dan",
+      "maka": "Keputusan Pit = Stay Out",
+      "sumber": "S2"
+    },
+    {
+      "id": "R15",
+      "jika": [
+        "Mandat FIA = Wajib Pit Ganti Ban Lain",
+        "Pilihan Ban = <Jenis Ban>"
+      ],
+      "mode": "dan",
+      "maka": "Goal = Box Box Box! Pasang Ban <Jenis Ban> - Memenuhi Wajib Regulasi FIA",
+      "sumber": "S1"
+    },
+    {
+      "id": "R16",
+      "jika": [
+        "Keputusan Pit = Momen Pit Hemat Waktu",
+        "Pilihan Ban = <Jenis Ban>"
+      ],
+      "mode": "dan",
+      "maka": "Goal = Box Lap Ini! Manfaatkan VSC/Safety Car -> Pasang Ban <Jenis Ban>",
+      "sumber": "S2"
+    },
+    {
+      "id": "R17",
+      "jika": [
+        "Keputusan Pit = Tangkis Undercut",
+        "Pilihan Ban = <Jenis Ban>"
+      ],
+      "mode": "dan",
+      "maka": "Goal = Box Lap Ini! Cover Undercut Rival -> Pasang Ban <Jenis Ban>",
+      "sumber": "S2"
+    },
+    {
+      "id": "R18",
+      "jika": [
+        "Sesi = Kualifikasi",
+        "Pilihan Ban = Soft Baru"
+      ],
+      "mode": "dan",
+      "maka": "Goal = Push Lap! Gas Pake Ban Soft Baru Buat Kualifikasi",
+      "sumber": "S1"
+    },
+    {
+      "id": "R19",
+      "jika": [
+        "Keputusan Pit = Stay Out"
+      ],
+      "mode": "dan",
+      "maka": "Goal = Stay Out! Ban Masih Bagus, Lanjut Push di Trekan",
+      "sumber": "S2"
+    }
+  ]
+}
