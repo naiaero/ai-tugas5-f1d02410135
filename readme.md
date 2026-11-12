@@ -1,12 +1,11 @@
-# README: Sistem Pakar Penentuan Strategi Pit Stop dan Pemilihan Ban Formula 1
+# Sistem Pakar Penentuan Strategi Pit Stop dan Pemilihan Ban Formula 1
 
-## 1. Identitas Pengembang
 * **Nama**: [Salsabila Nailafahdi]
 * **NIM**: [F1D02410135]
 
 ---
 
-## 2. Topik dan Cara Menjalankan Program
+## Topik dan Cara Menjalankan Program
 
 ### Topik
 Sistem Pakar berbasis **Forward Chaining** untuk memprediksi penentuan strategi *pit stop* dan pemilihan *compound* ban Formula 1 berdasarkan regulasi olahraga **FIA 2026** serta pemodelan strategi balapan taktis.
@@ -22,7 +21,7 @@ Sistem Pakar berbasis **Forward Chaining** untuk memprediksi penentuan strategi 
 
 ---
 
-## 3. Daftar Sumber dan Tabel Aturan
+## Daftar Sumber dan Tabel Aturan
 
 ### Daftar Sumber Referensi
 1. **S1 (Sumber 1)**: FIA 2026 F1 Regulations - Section B [Sporting] - Issue 09.
@@ -66,7 +65,7 @@ Berikut adalah 19 aturan *IF-THEN* yang direpresentasikan dalam sistem pakar:
 
 ---
 
-## 4. Metode Inferensi dan Alur Penelusuran
+## Metode Inferensi dan Alur Penelusuran
 
 ### Metode yang Dipilih: Forward Chaining (Pelacakan Maju)
 Metode inferensi yang digunakan adalah **Forward Chaining** (pelacakan maju). 
@@ -98,7 +97,7 @@ Metode *Forward Chaining* dipilih karena sistem pakar ini berorientasi pada data
 
 ---
 
-## 5. Kasus Uji dan Hasil Output (Screenshot)
+## Kasus Uji dan Hasil Output (Screenshot)
 
 ### Kasus Uji 1: Penanganan Ancaman Undercut saat Balapan Kering
 * **Input Fact**: Balapan utama, trek kering, baru pakai 1 jenis ban kering, target stint panjang, ada ancaman undercut rival, degradasi ban tinggi.
@@ -114,23 +113,11 @@ Metode *Forward Chaining* dipilih karena sistem pakar ini berorientasi pada data
 
 ---
 
-## 6. Batas Keberlakuan Pengetahuan (*Scope & Limitation*)
+## Batas Keberlakuan Pengetahuan (*Scope & Limitation*)
 
 Pengetahuan yang digunakan dalam sistem pakar ini disarikan dari Regulasi Olahraga Resmi FIA Formula 1 2026 (Section B) dan hasil riset optimasi strategi pit stop berbasis riset operasi (Aguad & Thraves, 2024), yang khusus dirancang untuk penentuan strategi pit stop dan pemilihan ban pada sesi kualifikasi dan balapan utama Formula 1 dalam kondisi balapan standar maupun kondisi dinamis (seperti Safety Car dan ancaman undercut). Hasil inferensi yang dikeluarkan oleh sistem ini bersifat rekomendasi atau saran teknis pendukung keputusan *race engineer*, bukan keputusan mutlak yang mengikat instruksi *pit wall* secara otomatis.
 
-### Tampilan Batas Keberlakuan pada Program (Console Disclaimer)
-```text
-================================================================================
-BATAS KEBERLAKUAN SISTEM:
-Sistem pakar ini berbasis pada Regulasi FIA F1 2026 (Section B) dan model 
-strategi balapan Aguad & Thraves (2024). Output yang dihasilkan bersifat 
-rekomendasi/saran teknis pendukung keputusan, bukan keputusan akhir balapan.
-================================================================================
-```
-
----
-
-## 7. Penggunaan Alat Bantu AI
+## Penggunaan Alat Bantu AI
 
 Alat bantu AI (**Gemini / Gemini Notebook**) digunakan dalam pengembangan proyek ini sebagai sarana asistensi untuk:
 1. Membantu pemetaan dan ekstraksi basis pengetahuan dari dokumen Regulasi FIA F1 2026 serta jurnal ilmiah strategi pit stop.
