@@ -86,13 +86,13 @@ Metode *Forward Chaining* dipilih karena sistem pakar ini berorientasi pada data
   8. `Degradasi Ban` = `Tinggi`
 
 * **Langkah Inferensi Forward Chaining**:
-  1. **Siklus 1**: Mengevaluasi **R1** \\(\rightarrow\\) Premis `Sesi = Balapan AND Kondisi Lintasan = Kering AND Deklarasi Basah FIA = Tidak AND Jumlah Compound Kering = 1 Jenis AND Sisa Lap <= Batas Stint` terpenuhi.
+  1. **Siklus 1**: Mengevaluasi **R1** -> Premis `Sesi = Balapan AND Kondisi Lintasan = Kering AND Deklarasi Basah FIA = Tidak AND Jumlah Compound Kering = 1 Jenis AND Sisa Lap <= Batas Stint` terpenuhi.
      * *Fakta Baru Ditambahkan*: `Mandat FIA` = `Wajib Pit Ganti Ban Lain`.
-  2. **Siklus 2**: Mengevaluasi **R8** \\(\rightarrow\\) Premis `Kondisi Lintasan = Kering AND Target Stint = Hemat Panjang` terpenuhi.
+  2. **Siklus 2**: Mengevaluasi **R8** -> Premis `Kondisi Lintasan = Kering AND Target Stint = Hemat Panjang` terpenuhi.
      * *Fakta Baru Ditambahkan*: `Pilihan Ban` = `Hard`.
-  3. **Siklus 3**: Mengevaluasi **R13** \\(\rightarrow\\) Premis `Ancaman Rival = Ancaman Undercut AND Degradasi Ban IN (Tinggi, Aus Parah)` terpenuhi.
+  3. **Siklus 3**: Mengevaluasi **R13** -> Premis `Ancaman Rival = Ancaman Undercut AND Degradasi Ban IN (Tinggi, Aus Parah)` terpenuhi.
      * *Fakta Baru Ditambahkan*: `Keputusan Pit` = `Tangkis Undercut`.
-  4. **Siklus 4**: Mengevaluasi **R15** & **R17** \\(\rightarrow\\) Premis `Keputusan Pit = Tangkis Undercut AND Pilihan Ban = Hard` terpenuhi.
+  4. **Siklus 4**: Mengevaluasi **R15** & **R17** -> Premis `Keputusan Pit = Tangkis Undercut AND Pilihan Ban = Hard` terpenuhi.
      * *Goal Terbentuk*: **`"Box Lap Ini! Cover Undercut Rival -> Pasang Ban Hard"`**.
 
 ---
